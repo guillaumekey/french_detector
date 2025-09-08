@@ -33,8 +33,10 @@ def is_valid_url(url: str) -> bool:
 
 def clean_text(text: str) -> str:
     """Clean text for better language detection"""
+    # Remove extra whitespace and newlines
     text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'[^\w\s\-àáâãäçèéêëìíîïñòóôõöùúûüýÿ]', ' ', text)
+    # Keep more characters for better language detection
+    text = re.sub(r'[^\w\s\-àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ\'\".,!?;:()\[\]{}]', ' ', text)
     return text.strip()
 
 
